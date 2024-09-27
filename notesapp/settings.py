@@ -89,9 +89,13 @@ WSGI_APPLICATION = 'notesapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'notes_database_s8h0',  # From your Render settings
+        'USER': 'notes_database_s8h0_user',  # From your Render settings
+        'PASSWORD': 'r5oGLUMJLjvX4m3XawbOr56T0Lns85Vi',  # From your Render settings
+        'HOST': 'dpg-crr9qp88fa8c73emidt0-a.frankfurt-postgres.render.com',  # External Database URL (from Render)
+        'PORT': '5432',  # PostgreSQL default port
+}
 }
 
 
