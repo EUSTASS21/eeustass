@@ -1,0 +1,112 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap">
+    <style>
+        /* Include your CSS styles here */
+        :root {
+            --color-main: #f68657;
+            --color-text: #383a3f;
+            --color-dark: #1f2124;
+            --color-gray: #677;
+            --color-bg: #f3f6f9;
+            --color-light: #acb4bd;
+            --color-lighter: #f9f9f9;
+            --color-white: #fff;
+            --color-border: #e0e3e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lexend', sans-serif;
+            color: inherit;
+            font-size: inherit;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.8em;
+            font-weight: 400;
+            font-size: 16px;
+            background-color: var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: var(--color-white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: var(--color-dark);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            display: block;
+            color: var(--color-text);
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--color-main);
+            border: none;
+            border-radius: 4px;
+            color: var(--color-white);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e57647; /* Slightly darker for hover effect */
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Login</button>
+            {% if form.errors %}
+                <p class="error-message">Invalid login. Please try again.</p>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

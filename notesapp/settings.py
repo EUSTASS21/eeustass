@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&dzi#zsb(hz6p(s#anunt&#-a%ohr2hld71*i72*^exvw-yq$y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['eeustass-1.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['eeustass-1.onrender.com', 'localhost','127.0.0.1']
 CSRF_TRUSTED_ORIGINS = [
     'https://eeustass-1.onrender.com',
 ]
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'notesapp.urls'
@@ -152,3 +153,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
+
+LOGIN_URL = '/login/'  # Redirect to login page if not logged in
+LOGIN_REDIRECT_URL = '/'  # Redirect here after login
+LOGOUT_REDIRECT_URL = '/login/'  # Redirect here after logout

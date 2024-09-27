@@ -4,7 +4,21 @@ from rest_framework.response import Response
 from .serializers import NoteSerializer
 from .models import Note
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
+
+
+import logging
 # Create your views here.
+
+logger = logging.getLogger(__name__)
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'index.html'
+    login_url = '/login/'  # Redirect to login page if not logged in
+
+    def dispatch(self, request, *args, **kwargs):
+        logger.info(f'User: {request.user} is authenticated: {request.user.is_authenticated}')
+        return super().dispatch(request, *args, **kwargs)
 
 @api_view(['GET'])
 def getRoutes(request):

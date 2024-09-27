@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.contrib.auth import views as auth_views
+from django.urls import path
+from api.views import HomeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('', HomeView.as_view(), name='home'),  # Use HomeView for the homepage
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),  # Login page
+    path('logout/', auth_views.LogoutView.as_view(next_page='/login/'), name='logout'),  # Logout page
 ]
