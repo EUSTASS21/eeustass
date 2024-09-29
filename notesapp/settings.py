@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&dzi#zsb(hz6p(s#anunt&#-a%ohr2hld71*i72*^exvw-yq$y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['eeustass-1.onrender.com','www.eeustass.tech','eeustass.tech' 'localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     'https://eeustass-1.onrender.com',
     'http://eeustass.tech',
